@@ -1,0 +1,42 @@
+##请设计时间和空间上都尽可能高效的算法，在不改变链表的前提下，求链式存储的线性表的倒数第m（>0）个元素。
+##Please design an algorithm that is as efficient as possible in time and space, and find the penultimate m(>0) element of the linear table stored in the chain without changing the linked list.
+#include <stdio.h>
+#include <stdlib.h>
+
+#define ERROR -1
+
+typedef int ElementType;
+typedef struct Node *PtrToNode;
+struct Node {
+    ElementType Data;
+    PtrToNode   Next;
+};
+typedef PtrToNode List;
+
+List Read();
+void Print( List L ); 
+
+ElementType Find( List L, int m );
+
+int main()
+{
+    List L;
+    int m;
+    L = Read();
+    scanf("%d", &m);
+    printf("%d\n", Find(L,m));
+    Print(L);
+    return 0;
+}
+
+ElementType Find( List L, int m ){
+    List head = L;
+    List p=head,q=head;
+    int cnt=0;
+    while(p->Next!=NULL){
+        p=p->Next;
+        cnt++;
+        if(cnt>=m) q=q->Next;
+    }
+    return q==head?ERROR:q->Data;
+}

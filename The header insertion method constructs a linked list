@@ -1,5 +1,26 @@
 ##本题实现链表的构造，采用表头插入法构造链表，输出表中所有元素。
 ##In this problem, the linked list is constructed by using the header insertion method to construct the linked list, and all elements in the table are output.
+
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct node
+{
+    int data;
+    struct node *next;
+}snode,*ptr;
+
+ptr  creat( );//构造链表
+void output(ptr p);//输出链表元素
+
+int main()
+{
+    ptr head;
+    head=creat();
+    output(head);
+    return 0;
+}
+
 ptr  creat()
 {
     int x;

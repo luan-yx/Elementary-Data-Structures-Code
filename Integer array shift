@@ -1,0 +1,14 @@
+##整数数组有n个元素，将数组元素循环右移p位。假设元素原来为：1,2,3,4,5,6，p为3，则移动后的数组为：456123。
+##The integer array has n elements, and the array element is shifted to the right by p bit. Assuming that the elements are: 1, 2, 3, 4, 5, 6, and p are 3, then the moved array is: 456123.
+void move(int a[],int p)
+{
+    while(p--)
+    {
+        int k = a[N-1];
+        for(int i = N-1;i>0;i--)
+        {
+            a[i]=a[i-1];
+        }
+        a[0]=k;
+    }
+}

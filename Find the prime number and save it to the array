@@ -1,0 +1,25 @@
+##本题目要求查找n~m之间所有素数，存入一维数组a中。
+##This problem requires finding all prime numbers between n~m and storing them in a one-dimensional array a.
+int fun(int n,int m,int a[])
+{
+    int k,t=0;
+    int i,j;
+    if(n>m)
+    {\
+     k=n;n=m;m=k;
+    }
+    for(i=n;i<=m;i++)
+    {
+        for(j=2;j<=i;j++){
+            if(i%j==0)
+                break;
+        }
+        if(i==j)
+        {
+            *a=i;
+            a++;
+            t++;
+        }
+    }
+    return t;
+}

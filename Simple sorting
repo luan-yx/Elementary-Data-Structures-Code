@@ -1,0 +1,16 @@
+##本题要求实现一个函数，将数据完成从小到大排序功能。
+##This question requires the implementation of a function to sort the data from smallest to largest.
+void sort( int a[], int n )
+{
+    int i,j;
+    for(i=0;i<n;i++)
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]>a[j])
+            {
+                a[i]=a[i]+a[j];
+                a[j]=a[i]-a[j];
+                a[i]=a[i]-a[j];
+            }
+        }
+}

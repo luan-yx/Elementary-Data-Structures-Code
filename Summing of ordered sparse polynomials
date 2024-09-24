@@ -1,0 +1,101 @@
+##本题求两个有序多项式的求和，输入的多项式有两项：系数和指数。
+##This problem is the sum of two ordered polynomials, and the input polynomial has two polynomials: coefficients and exponents.
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct node
+{
+    float ceof;
+    int exp;
+    struct node *next;
+}node,*ptr;
+
+ptr creat();//表尾插入法构造链表,在此不表
+ptr add(ptr ha,ptr hb);
+
+void output(ptr h)
+{
+    ptr p;
+    p=h->next;
+    while(p!=NULL)
+    {
+        printf("%+.1fx^%d",p->ceof,p->exp);
+        p=p->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    ptr h1,h2,h3;
+    h1=creat();
+    h2=creat();
+    h3=add(h1,h2);
+    output(h1);
+    output(h2);
+    output(h3);
+    return 0;
+}
+
+ptr add(ptr ha, ptr hb)
+{
+    ptr h, s, p;
+    h = s=(ptr)malloc(sizeof(node));
+    ha=ha->next;
+    hb=hb->next;
+    while (ha&&hb)
+    {
+        if (ha->exp < hb->exp) 
+        {
+            p = (ptr)malloc(sizeof(node));
+            p=ha;
+            ha = ha->next;
+            s->next = p;
+            s = p;
+        }
+        else if(ha->exp==hb->exp)
+        {
+            p = (ptr)malloc(sizeof(node));
+            if(ha->ceof+hb->ceof==0)
+            {
+            ha=ha->next;
+            hb=hb->next;
+            }
+            else
+            {
+                p->exp=ha->exp;
+                p->ceof=ha->ceof+hb->ceof;
+                ha=ha->next;
+                hb=hb->next;
+                s->next=p;
+                s=p;
+            }
+        }
+        else
+        {
+            p = (ptr)malloc(sizeof(node));
+            p=hb;
+            hb = hb->next;
+            s->next = p;
+            s = p;
+        }
+    }
+    while (ha != NULL)
+    {
+        p = (ptr)malloc(sizeof(node));
+        p=ha;
+        ha = ha->next;
+        s->next = p;
+        s = p;
+    }
+    while (hb != NULL)
+    {
+        p = (ptr)malloc(sizeof(node));
+        p=hb;
+        hb = hb->next;
+        s->next = p;
+        s = p;
+    }
+    s->next =NULL;
+    return h;
+}

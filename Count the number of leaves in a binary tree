@@ -1,0 +1,37 @@
+##本题是计算二叉树中叶结点的个数。
+##This problem is to calculate the number of leaf nodes in a binary tree.
+#include <stdio.h>
+#include <malloc.h>
+typedef struct node
+{
+    int data;
+    struct node *Lson,*Rson;
+}Bnode,*Bptr;
+
+int num (Bptr p);//只需完成求二叉树的叶结点的个树
+
+Bptr creat()；//以扩充先序序列构造二叉树，已构造完成
+
+int main()
+{
+  Bptr root;    
+    int k;    
+    root=creat();
+  k=num(root);
+  printf("%d\n", k);
+  return 0;
+
+}
+
+int num(Bptr p) {
+    if (p == NULL)
+    {
+        return 0;
+    }
+    if (p->Lson == NULL && p->Rson == NULL)
+    {
+        return 1;
+    }
+    return num(p->Lson)+num(p->Rson);
+  
+}

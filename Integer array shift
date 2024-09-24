@@ -1,5 +1,21 @@
 ##整数数组有n个元素，将数组元素循环右移p位。假设元素原来为：1,2,3,4,5,6，p为3，则移动后的数组为：456123。
 ##The integer array has n elements, and the array element is shifted to the right by p bit. Assuming that the elements are: 1, 2, 3, 4, 5, 6, and p are 3, then the moved array is: 456123.
+#include <stdio.h>
+#define N 10
+
+void  move(int a[], int p);
+
+
+int main()
+{
+    int i,a[N]={1,2,3,4,5,6,7,8,9,10},k;
+    scanf("%d",&k);
+    move(a,k);
+    for(i=0;i<N;i++)
+        printf("%d ",a[i]);
+    return 0;
+}
+
 void move(int a[],int p)
 {
     while(p--)

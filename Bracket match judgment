@@ -1,0 +1,72 @@
+##本题实现求表达式中括号是否匹配。只需判断表达式中括号（本题中只会出现三种括号，分别是小括号，中括号和大括号）是否匹配，表达式中可以有其他值也可没有。
+##This problem is used to find out whether the parentheses in the expression match. Just determine whether the parentheses in the expression (there are only three parentheses that will appear in this question, which are parentheses, parentheses, and curly braces) match, and there can be other values in the expression or not.
+#include <stdio.h>
+#define N 20
+int  match (char *exp);
+
+int main()
+{
+    char s[N];
+    int flag;
+    scanf("%s",s);
+    flag=match(s);
+    if(flag)
+        printf("%s match",s);
+    else
+        printf("%s not match",s);
+    return 0;
+}
+int  match (char *exp){  
+
+    typedef char datatype;
+    typedef struct{
+        datatype data[N];
+        int top;
+    }SqStack;
+    
+    SqStack S;
+    S.top=-1;
+    int n=0;
+    while(*exp)
+    {
+        if(S.top==N-1)
+        {
+            printf("栈满!");
+        } 
+        
+        if(*exp=='{'||*exp=='('||*exp=='['||*exp=='}'||*exp==')'||*exp==']'){
+         
+            if(n==0){
+                S.top++;
+                S.data[S.top]=*exp;
+                n++;
+            }
+            
+            else if(S.data[S.top]=='{'&&*exp=='}'){
+                S.top--;
+            }
+            else if(S.data[S.top]=='('&&*exp==')'){
+                S.top--;
+            }
+            else if(S.data[S.top]=='['&&*exp==']'){
+                S.top--;
+            }
+            else{
+                S.top++;
+                S.data[S.top]=*exp;
+                n++;
+            }
+        }
+        
+ 
+        exp++;
+    }
+    
+    if(S.top==-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+    
+}

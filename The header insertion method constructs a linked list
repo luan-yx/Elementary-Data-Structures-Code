@@ -1,0 +1,26 @@
+##本题实现链表的构造，采用表头插入法构造链表，输出表中所有元素。
+##In this problem, the linked list is constructed by using the header insertion method to construct the linked list, and all elements in the table are output.
+ptr  creat()
+{
+    int x;
+    ptr head,p;
+    head=NULL;
+    scanf("%d",&x);
+    while(x!=0)
+    {
+        p=(ptr)malloc(sizeof(snode));
+        p->data=x;
+        p->next=head;
+        head=p;
+        scanf("%d",&x);
+    }
+    return head;
+}
+void output(ptr p)
+{
+    while(p!=NULL)
+    {
+        printf("%d ",p->data);
+        p=p->next;
+    }
+}

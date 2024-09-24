@@ -1,0 +1,24 @@
+##找出二维数组每列中最小元素，并依次放入b所指一维数组中
+##Find the smallest element in each column of the two-dimensional array and put them into the one-dimensional array referred to by b in turn
+void small(int a[][N], int b[])
+{
+    int i, j;
+    int min;
+    for (i = 0; i < N; i++)
+    {
+        min = a[0][i];
+        for (j = 1; j < M; j++)
+        {
+            
+            if (a[j][i] < min)
+            {
+                min = a[j][i];
+            }
+               
+            
+            
+        }
+        *b = min;
+         b++;
+    }
+}

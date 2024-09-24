@@ -1,0 +1,65 @@
+##本题构造有序稀疏多项式的链式存储过程，输入的多项式有两项：系数和指数。
+##This problem constructs a chained storage procedure for ordered sparse polynomials, and the input polynomial has two polynomials: coefficients and exponents.
+#include <stdio.h>
+#include <malloc.h>
+
+
+typedef struct node
+{
+    float ceof;
+    int exp;
+    struct node *next;
+}node,*ptr;
+
+ptr creat();
+
+void output(ptr h)
+{
+    ptr p;
+    p=h->next;
+    while(p!=NULL)
+    {
+        printf("%+.1fx^%d",p->ceof,p->exp);
+        p=p->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    ptr head;
+    head=creat();
+    output(head);
+    return 0;
+}
+
+ptr creat()
+{
+    ptr p;
+    p = (ptr)malloc(sizeof(node));
+    node* q, * pre, * s;
+    p ->next = NULL;
+    
+    while(1)
+    {
+        
+        s = (ptr)malloc(sizeof(node));
+        scanf("%f %d", &s->ceof, &s->exp);
+        pre = p;
+        q = p -> next;
+        while (q && q->exp < s->exp)
+        {
+            pre = q;
+            q = q->next;
+ 
+        }
+        if(s->ceof==0)
+            break;
+        s->next = q;
+        pre->next = s;
+        
+        
+            
+    }
+ 
+}

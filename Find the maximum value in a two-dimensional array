@@ -1,5 +1,22 @@
 ##本题要求实现一个函数，可计算二维数组中的最大值。
 ##This problem requires the implementation of a function that calculates the maximum value in a two-dimensional array.
+
+#include <stdio.h>
+#define M 3
+#define N 4
+int  fun(int a[][N]);
+
+int main()
+{
+    int x[M][N],i,j,max;
+    for(i=0;i<M;i++)
+        for(j=0;j<N;j++)
+            scanf("%d",&x[i][j]);
+    max=fun(x);
+    printf("max=%d",max);
+    return 0;
+}
+
 int  fun(int a[][N])
 {
     int i,j,max;

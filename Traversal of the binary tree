@@ -1,0 +1,68 @@
+##本题构造一个含3个结点的二叉树，输入的第一个结点为根结点，第二个结点为根结点的左儿子，第三个结点为根结点的右儿子，输出这个二叉树的先序、中序和后序序列。
+##In this problem, a binary tree with 3 nodes is constructed, the first node is the root node, the second node is the left son of the root node, and the third node is the right son of the root node, and the precedents, middle orders, and later sequences of the binary tree are output.
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct node
+{
+    int data;
+    struct node *Lson,*Rson;
+}Bnode,*Bptr;
+
+Bptr creat();
+void preorder(Bptr p);//先序遍历
+void inorder(Bptr p);//中序遍历
+void postorder(Bptr p);//后序遍历
+
+int main()
+{
+    Bptr root=NULL;
+    root=creat();
+    preorder(root);
+    printf("\n");
+    inorder(root);
+    printf("\n");
+    postorder(root);
+    return 0;
+}
+Bptr creat()
+{
+    Bptr p;
+    int x[3];
+    int i;
+    for (i = 0; i < 3; i++)
+    {
+        scanf("%d", &x[i]);
+    }
+    p = (Bptr)malloc(sizeof(Bnode)); 
+    p->Lson = (Bptr)malloc(sizeof(Bnode));
+    p->Rson = (Bptr)malloc(sizeof(Bnode));
+    p->data = x[0];
+    p->Lson->data = x[1];
+    p->Rson->data= x[2];
+    return p;
+}
+ 
+void preorder(Bptr p)
+{
+    if (p == NULL) return;
+    printf("%d ", p->data);
+    preorder(p->Lson);
+    preorder(p->Rson);
+}
+void inorder(Bptr p)
+{
+    if (p == NULL) return;
+    inorder(p->Lson);
+    printf("%d ", p->data);
+    inorder(p->Rson);
+ 
+}
+void postorder(Bptr p)
+{
+    if (p == NULL) return;
+    postorder(p->Lson);
+    postorder(p->Rson);
+    printf("%d ", p->data);
+}
+ 

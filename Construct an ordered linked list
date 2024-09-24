@@ -1,0 +1,58 @@
+##本题实现链表的有序构造(建议使用加监督元链表实现)，输出表中所有元素。
+##In this problem, the orderly construction of a linked list is implemented (it is recommended to use a supervised meta-linked list implementation) to output all the elements in the table.
+#include <stdio.h>
+#include <malloc.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}snode,*ptr;
+
+ptr  creat( );//构造链表
+void output(ptr p);//输出链表元素
+
+int main()
+{
+    ptr head;
+    head=creat();
+    output(head);
+    return 0;
+}
+
+ptr  creat( )
+{
+    int x;
+    ptr head,m,n,p;
+    head=(ptr)malloc(sizeof(snode));
+    head->data=10000000;
+    head->next=head;
+    scanf("%d",&x);
+    while(x!=0)
+    {
+        p=(ptr)malloc(sizeof(snode));
+        p->data=x;
+        m=head;
+        n=m->next;
+        while(n->data<x)
+        {
+            m=n;
+        n=n->next;
+        }
+        m->next=p;
+        p->next=n;
+        scanf("%d",&x);
+        
+    }
+    return head;
+}
+void output(ptr p)
+{
+    ptr q;
+    q=p;
+    p=p->next;
+    while(p!=q)
+    {
+        printf("%d ",p->data);
+        p=p->next;
+    }
+}

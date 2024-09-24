@@ -1,0 +1,32 @@
+##本题实现链表的构造，采用表尾插入法构造链表，输出表中所有元素。
+##In this problem, the linked list is constructed, and the linked list is constructed by inserting the footer, and all elements in the table are output.
+ptr creat()
+{
+    int x;
+    ptr head,last,p;
+    head=NULL;
+    last=NULL;
+    scanf("%d",&x);
+    while(x!=0)
+    {
+        p=(ptr)malloc(sizeof(snode));
+        p->data=x;
+        if(head==NULL)
+            head=last=p;
+        else{
+            last->next=p;
+            last=p;
+        }
+        scanf("%d",&x);
+    }
+    last->next=NULL;
+    return(head);
+}
+void output(ptr p)
+{
+    while(p!=NULL)
+    {
+        printf("%d ", p->data );
+        p=p->next;
+    }
+}

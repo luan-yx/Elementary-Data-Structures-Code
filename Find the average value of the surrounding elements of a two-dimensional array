@@ -1,0 +1,21 @@
+##本题目要求二维数组周边元素的平均值。
+##This problem requires the average value of the surrounding elements of a two-dimensional array.
+double avg(int a[][N])
+{
+    int i,j,k=0;
+    double sum=0;
+    double av;
+    for(i=0;i<M;i++)
+    {
+        for(j=0;j<N;j++)
+        {
+            if(i==0||j==0||i==(M-1)||j==(N-1))
+            {
+                k++;
+                sum += a[i][j];
+            }
+        }
+    }
+    av = sum/k;
+    return av;
+}

@@ -1,5 +1,24 @@
 ##本题目要求二维数组周边元素的平均值。
 ##This problem requires the average value of the surrounding elements of a two-dimensional array.
+#include <stdio.h>
+#define M 3
+#define N 4
+
+double avg(int a[][N]);
+
+int main()
+{
+    int i,j,a[M][N];
+    double av;
+    for(i=0;i<M;i++)
+        for(j=0;j<N;j++)
+            scanf("%d",&a[i][j]);
+    av=avg(a);
+    printf("%f",av);
+    return 0;
+}
+
+
 double avg(int a[][N])
 {
     int i,j,k=0;

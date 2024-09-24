@@ -1,0 +1,23 @@
+##把高于等于平均分的学生数据放在b所指的数组中，高于等于平均分的学生人数通过函数值返回。
+##The data of students above or equal to the average score are placed in the array referred to by b, and the number of students with a score above or equal to the average score is returned by the function value.
+int h_avg(int a[], int n, int b[])
+{
+    int i,j=0;
+    
+    float k = 0;
+    for (i = 0; i < n; i++)
+    {
+        k = k + a[i];
+    }
+    k = k / n;
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] >= k)
+        {
+            *b = a[i];
+            b = b + 1;
+            j = j + 1;
+        }
+    }
+    return j;
+}

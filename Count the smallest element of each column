@@ -1,5 +1,23 @@
 ##找出二维数组每列中最小元素，并依次放入b所指一维数组中
 ##Find the smallest element in each column of the two-dimensional array and put them into the one-dimensional array referred to by b in turn
+#include <stdio.h>
+#define M 3
+#define N 4
+
+void small(int a[][N],int b[]);
+
+int main()
+{
+    int i,j,x[M][N],y[N];
+    for(i=0;i<M;i++)
+        for(j=0;j<N;j++)
+            scanf("%d",&x[i][j]);
+    small(x,y);
+    for(i=0;i<N;i++)
+        printf("%d ",y[i]);
+    return 0;
+}
+
 void small(int a[][N], int b[])
 {
     int i, j;

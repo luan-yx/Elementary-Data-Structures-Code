@@ -1,5 +1,19 @@
 ##This problem requires the implementation of a function that extracts the numbers in the string and synthesizes them into an integer. For example, "a1bs43de6" is extracted as an integer 1436.
 ##本题要求实现一个函数，将字符串中的数字提取出来合成一个整数。如“a1bs43de6”提取结果为整数1436。
+#include  <stdio.h>
+#define  N  80  //字符串的长度限制
+int extract(char a[]);
+
+int main()
+{
+     char x[N];
+     int val;
+     scanf("%s",x);
+     val=extract(x);
+     printf("%d\n",val);
+     return 0;
+}
+
 int extract(char a[])
 {
     int i=0,t=0;
